@@ -36,8 +36,8 @@
 							<span class="fa fa-home"></span><span class="mtext">Offers & deals </span>
 						</a>
 						<ul class="submenu">
-							<li><a href="<?php echo base_url();?>sub-admin/offers-deals-list">Offers & deals</a></li>
-							<li><a href="<?php echo base_url();?>sub-admin/offers-deals">Offers & Deals List</a></li>
+							<li><a href="<?php echo base_url();?>sub-admin/offers-deals">Offers & deals</a></li>
+							<li><a href="<?php echo base_url();?>sub-admin/offers-deals-list">Offers & Deals List</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">

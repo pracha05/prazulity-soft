@@ -25,8 +25,15 @@
 			</div>
 		</div>
 		<div class="bg-white pd-20 box-shadow border-radius-5 mb-30">
-			<form>
+			<form method="post" enctype="multipart/form-data">
 				 <fieldset class="scheduler-border">
+				 <?php if($this->session->flashdata('msg_succ') != ''){?>  
+			<div class="alert alert-info alert-success">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<i class="fa fa-check-circle"></i>
+				<?php echo $this->session->flashdata('msg_succ')?$this->session->flashdata('msg_succ'):'';?>
+			</div>
+		<?php } ?>
 						<legend class="scheduler-border">
 						Offers & Deals</legend>
 					
@@ -34,32 +41,34 @@
 					<div class="form-group col-md-6">
 						<label class="">Offer type</label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter Offer type" />
+							<input type="text" class="form-control" name="offer_type" placeholder="Enter Offer type" />
+							<b><?php echo form_error('offer_type'); ?></b>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
 						<label class="">Item</label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter Item" />
+							<input type="text" class="form-control" name="item" placeholder="Enter Item" /><b><?php echo form_error('item'); ?></b>
 						</div>
 					</div>	
 					<div class="form-group col-md-6">
 						<label class="">Offer description</label>
 						<div class="">
-							<textarea class="form-control">Description</textarea>
+							<textarea class="form-control" name="offer_des"></textarea>
+							<b><?php echo form_error('offer_des'); ?></b>
 						</div>
 					</div>
 						<div class="form-group col-md-6">
 						<label class="">Upload image</label>
 						<div class="">
-							<input type="file" class="form-control">
+							<input type="file" name="image" class="form-control">
 						</div>
 					</div>
 					
 					
 					<div class="form-group col-md-6">
 						<div class="col-lg-9 col-lg-offset-3">
-							<button type="submit" class="btn btn-primary" name="signup" value="Sign up">Add Offer</button>
+							<button type="submit" class="btn btn-primary" name="submit" value="add">Add Offer</button>
 						</div>
 					</div>
 				</div>

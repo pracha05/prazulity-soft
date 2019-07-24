@@ -7,13 +7,14 @@ class Updatereg_model extends CI_Model
 	
 	public function set_user_data($id) {
 	    $set_array = array( 
-			'name'               => $this->input->post('name'),
-			'address'            => $this->input->post('address'),
-			'email'              => $this->input->post('email'),
-			'mob_num'            => $this->input->post('mobile'),
+			
+			'name'             => $this->input->post('name'),
+			'mob_num'              => $this->input->post('mobile'),
+			'email'            => $this->input->post('email'),
+			'address'             => $this->input->post('address'),
 		); 
 		$this->db->where('id',$id);
-	    $query = $this->db->update($this->table_name,$set_array);
+	    $query = $this->db->insert($this->table_name,$set_array);
 	    return $query;
     }
 

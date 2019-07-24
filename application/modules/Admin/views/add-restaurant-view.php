@@ -27,7 +27,7 @@
 		<div class="bg-white pd-20 box-shadow border-radius-5 mb-30">
 			<form method="post">
 				 <fieldset class="scheduler-border">
-				  <?php if($this->session->flashdata('msg_error_register') != ''){?>
+		<?php if($this->session->flashdata('msg_error_register') != ''){?>
 			<div class="alert alert-info alert-danger">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 				<i class="fa fa-exclamation-circle"></i>

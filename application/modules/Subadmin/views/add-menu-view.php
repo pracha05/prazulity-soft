@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<div class="bg-white pd-20 box-shadow border-radius-5 mb-30">
-			<form>
+			<form method="post">
 				 <fieldset class="scheduler-border">
 						<legend class="scheduler-border">Menu Information</legend>
 					
@@ -33,41 +33,41 @@
 					<div class="form-group col-md-6">
 						<label class="">Category</label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter Category Name" />
+							<input type="text" class="form-control" name="category" placeholder="Enter Category Name" /><b><?php echo form_error('category'); ?></b>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
 						<label class="">Sub Category</label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter Sub Category Name" />
+							<input type="text" class="form-control" name="sub_category" placeholder="Enter Sub Category Name" /><b><?php echo form_error('sub_category'); ?></b>
 						</div>
 					</div>	
 					<div class="form-group col-md-6">
 						<label class="">Item Name </label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter Item Name" />
+							<input type="text" class="form-control" name="item_name" placeholder="Enter Item Name" /><b><?php echo form_error('item_name'); ?></b>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
 						<label class="">Quantity</label>
 						<div class="">
-							<select class="form-control">
-									<option>Quantity</option>
-									<option>Half</option>
-									<option>Full</option>
+							<select class="form-control" name="quality">
+									<option>Select</option>
+									<option value="half">Half</option>
+									<option value="full">Full</option>
 							</select>
-						</div>
+						</div><b><?php echo form_error('quality'); ?></b>
 					</div>
 					<div class="form-group col-md-6">
 						<label class="">Price</label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter Price Details" />
+							<input type="text" class="form-control" name="price" placeholder="Enter Price Details" /><b><?php echo form_error('price'); ?></b>
 						</div>
 					</div>
 					
 					<div class="form-group col-md-12">
 						<div class="col-lg-9 col-lg-offset-3">
-							<button type="submit" class="btn btn-primary" name="signup" value="Sign up">Register and Generate Barcode</button>
+							<button type="submit" class="btn btn-primary" name="submit" value="submit">Register and Generate Barcode</button>
 						</div>
 					</div>
 				</div>

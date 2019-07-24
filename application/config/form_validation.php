@@ -22,7 +22,91 @@
 								'errors' => array('numeric' => 'The Mobile Number you entered does not seem to be valid.','max_length' => 'The Mobile Number field cannot exceed 12 digits.')
 						    ),				
 											 
-	        )
+	        ),
+			
+			'addtable' => array(	 
+						array(
+								'field' => 'floor_num',
+								'label' => 'Floor Number',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'table_num',
+								'label' => 'Table Number',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'no_of_seats',
+								'label' => 'Number of Seats',
+								'rules' => 'trim|required|xss_clean'
+							),		 
+	        ),
+			
+			'addtable' => array(	 
+						array(
+								'field' => 'floor_num',
+								'label' => 'Floor Number',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'table_num',
+								'label' => 'Table Number',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'no_of_seats',
+								'label' => 'Number of Seats',
+								'rules' => 'trim|required|xss_clean'
+							),		 
+	        ),
+			'addoffer' => array(	 
+						array(
+								'field' => 'offer_type',
+								'label' => 'Offer type',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'item',
+								'label' => 'Item',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'offer_des',
+								'label' => 'Offer description',
+								'rules' => 'trim|required|xss_clean'
+							),	
+                           								
+	        ),
+			'addmenu' => array(	 
+						array(
+								'field' => 'category',
+								'label' => 'Category',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'sub_category',
+								'label' => 'Sub Category',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'item_name',
+								'label' => 'Item Name',
+								'rules' => 'trim|required|xss_clean'
+							),
+							
+							array(
+								'field' => 'quality',
+								'label' => 'Quantity',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'price',
+								'label' => 'Price',
+								'rules' => 'trim|required|xss_clean'
+							),
+
+                           								
+	                )
 
   );    
 

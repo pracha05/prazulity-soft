@@ -16,7 +16,13 @@ class Menu extends MY_Controller
 	public function __construct() {
         parent::__construct();
         $this->load->library('session');
-		$this->load->model('Updatereg_model','My_model');
+		$this->load->model('Menu_model','My_model');
+		$this->load->library('form_validation');
+		$this->load->helper('security');
+		$this->form_validation->set_error_delimiters('<div class="error" style="color:red;">', '</div>');
+		error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+		error_reporting(0);
+		ini_set('display_errors','off');
     }
 	
 	
@@ -35,8 +41,17 @@ class Menu extends MY_Controller
 		$this->load->view($this->head);
 		$this->load->view($this->header);
 		$this->load->view($this->sidebar);
-		
-		
+		if($this->input->post('submit')){
+			if($this->form_validation->run('addmenu')== TRUE){
+				$result = $this->My_model->add_record($this->session->userdata('id'));
+				if($result){
+					$this->session->set_flashdata('msg_succ', 'Added Successfully...');
+					redirect('sub-admin/add-table');
+				}else{
+					$data['msg'] = "Not Inserted...";
+				}
+			}
+		}
 		$this->load->view($this->addpage);
 		$this->load->view($this->script);
 		$this->load->view($this->footer);

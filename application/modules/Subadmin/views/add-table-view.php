@@ -25,34 +25,51 @@
 			</div>
 		</div>
 		<div class="bg-white pd-20 box-shadow border-radius-5 mb-30">
-			<form>
+			<form method="post">
 				 <fieldset class="scheduler-border">
+				 <?php if($this->session->flashdata('msg_error_register') != ''){?>
+			<div class="alert alert-info alert-danger">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<i class="fa fa-exclamation-circle"></i>
+				<?php echo $this->session->flashdata('msg_error_register')?$this->session->flashdata('msg_error_register'):'';?>
+			</div>
+		<?php } ?>
+		<?php if($this->session->flashdata('msg_succ') != ''){?>  
+			<div class="alert alert-info alert-success">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<i class="fa fa-check-circle"></i>
+				<?php echo $this->session->flashdata('msg_succ')?$this->session->flashdata('msg_succ'):'';?>
+			</div>
+		<?php } ?>
 						<legend class="scheduler-border">Table Information</legend>
 					
 					<div class="row">
 					<div class="form-group col-md-6">
 						<label class="">Floor Number</label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter Floor Number" />
+							<input type="text" class="form-control" name="floor_num" placeholder="Enter Floor Number" />
+							<b><?php echo form_error('floor_num'); ?></b>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
 						<label class="">Table Number</label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter Table Number" />
+							<input type="text" class="form-control" name="table_num" placeholder="Enter Table Number" />
+							<b><?php echo form_error('table_num'); ?></b>
 						</div>
 					</div>	
 					<div class="form-group col-md-6">
 						<label class="">Number of Seats</label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter No.of Seats" />
+							<input type="text" class="form-control" name="no_of_seats" placeholder="Enter No.of Seats" />
+							<b><?php echo form_error('no_of_seats'); ?></b>
 						</div>
 					</div>
 					
 					
 					<div class="form-group col-md-12">
 						<div class="col-lg-9 col-lg-offset-3">
-							<button type="submit" class="btn btn-primary" name="signup" value="Sign up">Register and Generate Barcode</button>
+							<button type="submit" name="submit" value="add" class="btn btn-primary" >Register and Generate Barcode</button>
 						</div>
 					</div>
 				</div>
