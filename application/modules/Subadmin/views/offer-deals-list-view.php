@@ -1,4 +1,6 @@
-
+<?php $this->load->view('../views/subadmin/head.php'); ?>
+<?php $this->load->view('../views/subadmin/header.php'); ?>
+<?php $this->load->view('../views/subadmin/sidebar.php'); ?>
 	<?php //include('head.php'); ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/asserts/src/plugins/datatables/media/css/jquery.dataTables.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/asserts/src/plugins/datatables/media/css/dataTables.bootstrap4.css">
@@ -55,12 +57,13 @@
 								</tr>
 							</thead>
 							<tbody>
+								<?php  $i=1;foreach($record as $key => $row){ ?> 
 								<tr>
-									<td class="1">1</td>
-									<td class="table-plus">50% off</td>
-									<td>Biryani</td>
+									<td class="1"><?php echo $i;?></td>
+									<td class="table-plus"><?php echo  $row['offer_type'];?></td>
+									<td><?php echo  $row['item'];?></td>
 									
-									<td>50% off on order above 200RS/-</td>
+									<td><?php echo  $row['ofer_des'];?></td>
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -68,50 +71,14 @@
 											</a>
 											<div class="dropdown-menu dropdown-menu-right">
 												<a class="dropdown-item" href="#"><i class="fa fa-eye"></i> View</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-pencil"></i> Edit</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete</a>
+												<a class="dropdown-item" href="<?php echo base_url();?>sub-admin/edit-offer/<?php echo  $row['id'];?>"><i class="fa fa-pencil"></i> Edit</a>
+												<a class="dropdown-item" onclick="return confirm('Are you sure you want to Remove?');" href="<?php echo base_url();?>Subadmin/Offersdeals/delete/<?php echo  $row['id'];?>"><i class="fa fa-trash"></i> Delete</a>
 											</div>
 										</div>
 									</td>
 								</tr>
-								<tr>
-									<td class="1">3</td>
-									<td class="table-plus">Buy 1 Get 1 Free</td>
-									<td>Pizza & Burger</td>
 								
-									<td>Get free pizza and burger on order above 500RS/-</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="fa fa-ellipsis-h"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right">
-												<a class="dropdown-item" href="#"><i class="fa fa-eye"></i> View</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-pencil"></i> Edit</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete</a>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="1">3</td>
-									<td class="table-plus">Happy Hours</td>
-									<td>Soft Drinks</td>
-									
-									<td>It will be applicable from 6PM to 8PM EveryDay and you will get 1+1 On Soft Drinks..</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="fa fa-ellipsis-h"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right">
-												<a class="dropdown-item" href="#"><i class="fa fa-eye"></i> View</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-pencil"></i> Edit</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete</a>
-											</div>
-										</div>
-									</td>
-								</tr>
+								<?php $i++; } ?>
 								
 							</tbody>
 						</table>
@@ -119,10 +86,10 @@
 				</div>
 				<!-- Export Datatable End -->
 			</div>
-			<?php //include('footer.php'); ?>
+			<?php $this->load->view('../views/subadmin/footer.php'); ?>
 		</div>
 	</div>
-	<?php //include('script.php'); ?>
+	<?php $this->load->view('../views/subadmin/script.php'); ?>
 	<script src="<?php echo base_url();?>/asserts/src/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url();?>/asserts/src/plugins/datatables/media/js/dataTables.bootstrap4.js"></script>
 	<script src="<?php echo base_url();?>/asserts/src/plugins/datatables/media/js/dataTables.responsive.js"></script>
@@ -166,7 +133,37 @@
 				},
 				dom: 'Bfrtip',
 				buttons: [
-				'copy', 'csv', 'pdf', 'print'
+				    {
+					   extend: 'copy',
+					   footer: false,
+					   exportOptions: {
+							columns: [0,1,2,3]
+						}
+				   },
+				   {
+					   extend: 'csv',
+					   footer: false,
+					   exportOptions: {
+							columns: [0,1,2,3]
+						}
+					  
+				   },
+				   {
+					   extend: 'pdf',
+					   footer: true,
+						exportOptions: {
+							columns: [0,1,2,3]
+						}
+				   },
+				   
+				  
+				   {
+					   extend: 'print',
+					   footer: false,
+					   exportOptions: {
+							columns: [0,1,2,3]
+						}
+				   }         
 				]
 			});
 			var table = $('.select-row').DataTable();

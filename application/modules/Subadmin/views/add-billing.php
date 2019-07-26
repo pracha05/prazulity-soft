@@ -1,6 +1,9 @@
 <?php //include( "head.php"); ?>
 <?php //include( "header.php"); ?>
 <?php //include( "sidebar.php"); ?>
+<?php $this->load->view('../views/subadmin/head'); ?>
+<?php $this->load->view('../views/subadmin/header.php'); ?>
+<?php $this->load->view('../views/subadmin/sidebar.php'); ?>
 
 <div class="main-container">
 	<div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -25,7 +28,7 @@
 			</div>
 		</div>
 		<div class="bg-white pd-20 box-shadow border-radius-5 mb-30">
-			<form>
+			<form method="post">
 				 <fieldset class="scheduler-border">
 						<legend class="scheduler-border">Receive Payment Details</legend>
 					
@@ -33,27 +36,25 @@
 					<div class="form-group col-md-6">
 						<label class="">Bank Account Name Holder</label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter Bank Account Details" />
+							<input type="text" class="form-control" name="holder_name" placeholder="Enter Bank Account Details" /><b><?php echo form_error('holder_name'); ?></b>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
 						<label class="">Bank Account Number</label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter Bank Account Number" />
+							<input type="text" class="form-control" name="act_num" placeholder="Enter Bank Account Number" />
+							<b><?php echo form_error('act_num'); ?></b>
 						</div>
 					</div>
 					<div class="form-group col-md-6">
 						<label class="">IFSC Code</label>
 						<div class="">
-							<input type="text" class="form-control" name="firstName" placeholder="Enter IFSC Code" />
+							<input type="text" class="form-control" name="ifc_code" placeholder="Enter IFSC Code" /><b><?php echo form_error('ifc_code'); ?></b>
 						</div>
 					</div>
-					
-					
-					
 					<div class="form-group col-md-12">
 						<div class="col-lg-9 col-lg-offset-3">
-							<button type="submit" class="btn btn-primary" name="signup" value="Sign up">Submit</button>
+							<button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
 						</div>
 					</div>
 				</div>
@@ -63,9 +64,11 @@
 				
 			</form>
 		</div>
+		<?php $this->load->view('../views/subadmin/footer.php'); ?>
 		<?php //include( "footer.php"); ?>
 	</div>
 </div>
+<?php $this->load->view('../views/subadmin/script.php'); ?>
 <?php //include( "script.php"); ?>
 <script type="text/javascript">
 	$(document).ready(function() {

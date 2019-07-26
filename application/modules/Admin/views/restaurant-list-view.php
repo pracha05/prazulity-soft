@@ -1,9 +1,12 @@
+  <?php echo $this->load->view('../views/admin/head.php'); ?>
 
 	<?php //include('head.php'); ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asserts/src/plugins/datatables/media/css/jquery.dataTables.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asserts/src/plugins/datatables/media/css/dataTables.bootstrap4.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asserts/src/plugins/datatables/media/css/responsive.dataTables.css">
-
+	
+    <?php echo $this->load->view('../views/admin/header.php'); ?>
+	<?php echo $this->load->view('../views/admin/sidebar.php'); ?>
 	<?php //include('header.php'); ?>
 	<?php //include('sidebar.php'); ?>
 	<div class="main-container">
@@ -42,6 +45,14 @@
 				<!-- Export Datatable start -->
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30">
 				
+				<?php if($this->session->flashdata('msg_succ') != ''){?>  
+			<div class="alert alert-info alert-success">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<i class="fa fa-check-circle"></i>
+				<?php echo $this->session->flashdata('msg_succ')?$this->session->flashdata('msg_succ'):'';?>
+			</div>
+		<?php } ?>
+				
 					<div class="row">
 						<table class="stripe hover multiple-select-row data-table-export nowrap">
 							<thead>
@@ -57,13 +68,15 @@
 								</tr>
 							</thead>
 							<tbody>
+							
+							<?php  $i=1;foreach($record as $key => $row){ ?>
 								<tr>
-									<td class="1">1</td>
-									<td class="table-plus">PRAZU01</td>
-									<td>Mehfil</td>
-									<td>xxxxxxxxxx</td>
-									<td>Mehfil@gmail.com</td>
-									<td>29-03-2018</td>
+									<td class="1"><?php echo $i;?></td>
+									<td class="table-plus"><?php echo  $row['id'];?></td>
+									<td><?php echo  $row['name'];?></td>
+									<td><?php echo  $row['mob_num'];?></td>
+									<td><?php echo  $row['email'];?></td>
+									<td><?php echo  date('d-m-Y',strtotime($row['created']));?></td>
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -71,62 +84,27 @@
 											</a>
 											<div class="dropdown-menu dropdown-menu-right">
 												<a class="dropdown-item" href="#"><i class="fa fa-eye"></i> View</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-pencil"></i> Edit</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete</a>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="1">3</td>
-									<td class="table-plus">PRAZU01</td>
-									<td>Pista House</td>
-									<td>xxxxxxxxxx</td>
-									<td>pistahouse@gmail.com</td>
-									<td>29-03-2018</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="fa fa-ellipsis-h"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right">
-												<a class="dropdown-item" href="#"><i class="fa fa-eye"></i> View</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-pencil"></i> Edit</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete</a>
-											</div>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td class="1">3</td>
-									<td class="table-plus">PRAZU01</td>
-									<td>Southern Cafe</td>
-									<td>xxxxxxxxxx</td>
-									<td>southerncafe@gmail.com</td>
-									<td>29-03-2018</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="fa fa-ellipsis-h"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right">
-												<a class="dropdown-item" href="#"><i class="fa fa-eye"></i> View</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-pencil"></i> Edit</a>
-												<a class="dropdown-item" href="#"><i class="fa fa-trash"></i> Delete</a>
+												<a class="dropdown-item" href="<?php echo base_url();?>admin/edit-restaurant/<?php echo  $row['id'];?>"><i class="fa fa-pencil"></i> Edit</a>
+												<a class="dropdown-item" href="<?php echo base_url();?>admin/Restaurant/delete/<?php echo  $row['id'];?>"><i class="fa fa-trash"></i> Delete</a>
 											</div>
 										</div>
 									</td>
 								</tr>
 								
+								
+							<?php $i++;}?>
 							</tbody>
 						</table>
 					</div>
 				</div>
 				<!-- Export Datatable End -->
 			</div>
+			    <?php echo $this->load->view('../views/admin/footer.php'); ?>
+
 			<?php //include('footer.php'); ?>
 		</div>
 	</div>
+	<?php echo $this->load->view('../views/admin/script.php'); ?>
 	<?php //include('script.php'); ?>
 	<script src="<?php echo base_url();?>asserts/src/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url();?>asserts/src/plugins/datatables/media/js/dataTables.bootstrap4.js"></script>
@@ -171,7 +149,39 @@
 				},
 				dom: 'Bfrtip',
 				buttons: [
-				'copy', 'csv', 'pdf', 'print'
+				    {
+					   extend: 'copy',
+					   footer: false,
+					   exportOptions: {
+							columns: [0,1,2,3,4,5]
+						}
+				   },
+				   
+				   {
+					   extend: 'csv',
+					   footer: false,
+					   exportOptions: {
+							columns: [0,1,2,3,4,5]
+						}
+					  
+				   },
+				   {
+					   extend: 'pdf',
+					   footer: true,
+						exportOptions: {
+							columns: [0,1,2,3,4,5]
+						}
+					   
+					  
+				   },
+				   
+				   {
+					   extend: 'print',
+					   footer: false,
+					   exportOptions: {
+							columns: [0,1,2,3,4,5]
+						}
+				   }         
 				]
 			});
 			var table = $('.select-row').DataTable();

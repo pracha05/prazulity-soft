@@ -14,6 +14,9 @@ class Updaterestaurant extends MY_Controller
 
 	public function __construct() {
         parent::__construct();
+		if($this->session->userdata('id') ==''){
+			redirect(base_url());
+		}
         $this->load->library('session');
 		$this->load->model('Updatereg_model','My_model');
     }

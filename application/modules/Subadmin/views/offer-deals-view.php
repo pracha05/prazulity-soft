@@ -1,6 +1,8 @@
-<?php //include( "head.php"); ?>
-<?php //include( "header.php"); ?>
-<?php //include( "sidebar.php"); ?>
+
+
+<?php $this->load->view('../views/subadmin/head.php'); ?>
+<?php $this->load->view('../views/subadmin/header.php'); ?>
+<?php $this->load->view('../views/subadmin/sidebar.php'); ?>
 
 <div class="main-container">
 	<div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
@@ -78,9 +80,12 @@
 				
 			</form>
 		</div>
-		<?php //include( "footer.php"); ?>
+		<?php $this->load->view('../views/subadmin/footer.php'); ?>
+		
 	</div>
 </div>
+		<?php $this->load->view('../views/subadmin/script.php'); ?>
+
 <?php //include( "script.php"); ?>
 <script type="text/javascript">
 	$(document).ready(function() {

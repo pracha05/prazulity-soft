@@ -1,7 +1,10 @@
 <?php //include( "head.php"); ?>
 <?php //include( "header.php"); ?>
 <?php //include( "sidebar.php"); ?>
-
+<?php echo $this->load->view('../views/admin/head.php'); ?>
+  <?php echo $this->load->view('../views/admin/header.php',$sess_data); ?>
+	<?php echo $this->load->view('../views/admin/sidebar.php'); ?>
+	
 <div class="main-container">
 	<div class="pd-ltr-20 customscroll customscroll-10-p height-100-p xs-pd-20-10">
 		<div class="bg-white pd-10 box-shadow border-radius-5 mb-10">
@@ -79,10 +82,11 @@
 				
 			</form>
 		</div>
+		<?php echo $this->load->view('../views/admin/footer.php'); ?>
 		<?php //include( "footer.php"); ?>
 	</div>
-</d
-iv>
+</div>
+	<?php echo $this->load->view('../views/admin/script.php'); ?>
 <?php //include( "script.php"); ?>
 <script type="text/javascript">
 	$(document).ready(function() {

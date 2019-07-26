@@ -1,7 +1,24 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
         $config = array(	
 			
-	       'adddata' => array(	 
+	       'login_add' => array(	 
+						
+                        array(
+								'field' => 'email',
+								'label' => 'Email',
+								'rules' => 'trim|required|regex_match[/^[\w-.]{2,}@.{2,}$/]|valid_email|xss_clean'
+							 ),	 
+							 array(
+								'field' => 'pwd',
+								'label' => 'Password',
+								'rules' => 'trim|required|xss_clean'
+							),
+
+											 
+	        ),
+			
+			
+			'adddata' => array(	 
 						array(
 								'field' => 'name',
 								'label' => 'Name',
@@ -24,20 +41,22 @@
 											 
 	        ),
 			
-			'addtable' => array(	 
+			
+			
+			'addbilling' => array(	 
 						array(
-								'field' => 'floor_num',
-								'label' => 'Floor Number',
+								'field' => 'holder_name',
+								'label' => 'Bank Account Name Holder',
 								'rules' => 'trim|required|xss_clean'
 							),
 							array(
-								'field' => 'table_num',
-								'label' => 'Table Number',
+								'field' => 'act_num',
+								'label' => 'Bank Account Number',
 								'rules' => 'trim|required|xss_clean'
 							),
 							array(
-								'field' => 'no_of_seats',
-								'label' => 'Number of Seats',
+								'field' => 'ifc_code',
+								'label' => 'IFSC Code',
 								'rules' => 'trim|required|xss_clean'
 							),		 
 	        ),
@@ -106,7 +125,35 @@
 							),
 
                            								
+	                ),
+					
+					'addrestarent' => array(	 
+						
+							array(
+								'field' => 'reg_name',
+								'label' => 'Restaurant Name',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'mobile',
+								'label' => 'Restaurant Mobile',
+								'rules' => 'trim|required|xss_clean'
+							),
+							
+							array(
+								'field' => 'email',
+								'label' => 'Email',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'address',
+								'label' => 'Address',
+								'rules' => 'trim|required|xss_clean'
+							),
+
+                           								
 	                )
+
 
   );    
 

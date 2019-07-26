@@ -18,12 +18,39 @@ class Table_model extends CI_Model
 	    return $query;
     }
 
-	
-	 public function get_session_data($id){
-	    $query =$this->db->select('*')->from($this->table_name)->where('id',$id)->get(); 
-	    $result = $query->row_array();
+	 
+	public function get_table_data(){
+        $query = $this->db->select("*")->from($this->table_name)->order_by('id','desc')->get();
+	    $result = $query->result_array();
 		return $result;
-		
+    }
+	
+	public function get_single_record($id=''){
+        $this->db->select("*");
+		$this->db->from($this->table_name);
+		if($id != ''){
+			$this->db->where("id",$id);
+			$query = $this->db->get();
+			$result = $query->row_array();
+		}
+		return $result;
+	}
+	
+	public function update_record($id) { 
+	    $set_array = array( 
+			'floor_num'       => $this->input->post('floor_num'),
+			'table_name'      => $this->input->post('table_num'),
+			'num_of_seats'    => $this->input->post('no_of_seats'),
+		); 
+		$this->db->where('id',$id);
+	    $query = $this->db->update($this->table_name,$set_array);
+	    return $query;
+    }
+	
+	public function delete_record($id){
+		$this->db->where('id',$id);
+		$result = $this->db->delete($this->table_name); 
+		return $result;
 	}
 
    

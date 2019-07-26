@@ -54,21 +54,46 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //****************** Cutomer Starts Here *********************//
+$route['admin/forgot-password'] = 'Admin/Forgot';
 $route['admin/dashboard'] = 'Admin/Dashboard';
 $route['admin/restaurant-list'] = 'Admin/Restaurant';
 $route['admin/add-restaurant'] = 'Admin/Restaurant/addrestaurant';
+$route['admin/edit-restaurant/([a-zA-Z0-9-]+)'] = 'Admin/Restaurant/editrestarent/$1';
+
+
+$route['admin/Payment-details'] = 'Admin/Payment';
+$route['admin/running-client-status'] = 'Admin/Runningclientstatus';
+$route['admin/chat'] = 'Admin/Chat';
+
 
 //sub admin
 $route['sub-admin/update-restaurant'] = 'Subadmin/Updaterestaurant';
+//****table***//
 $route['sub-admin/table-list'] = 'Subadmin/Table';
 $route['sub-admin/add-table'] = 'Subadmin/Table/addtable';
+$route['sub-admin/edit-table/([a-zA-Z0-9-]+)'] = 'Subadmin/Table/edittable/$1';
+//****ofr
 $route['sub-admin/offers-deals-list'] = 'Subadmin/Offersdeals';
 $route['sub-admin/offers-deals'] = 'Subadmin/Offersdeals/addofferdeal';
-
+$route['sub-admin/edit-offer/([a-zA-Z0-9-]+)'] = 'Subadmin/Offersdeals/editoffer/$1';
+//*******menu
 $route['sub-admin/menu-list'] = 'Subadmin/Menu';
 $route['sub-admin/add-menu'] = 'Subadmin/Menu/addmenu';
+$route['sub-admin/edit-menu/([a-zA-Z0-9-]+)'] = 'Subadmin/Menu/editmenu/$1';
+
 
 $route['sub-admin/billing-list'] = 'Subadmin/Billing';
 $route['sub-admin/add-billing'] = 'Subadmin/Billing/addbilling';
+$route['sub-admin/edit-billing/([a-zA-Z0-9-]+)'] = 'Subadmin/Billing/editbilling/$1';
+
+//******** add kichen******//
+
+$route['sub-admin/restaurant-list'] = 'Subadmin/Restaurant';
+$route['sub-admin/add-restarent'] = 'Subadmin/Restaurant/addrestarent';
+$route['sub-admin/edit-restarent/([a-zA-Z0-9-]+)'] = 'Subadmin/Restaurant/editrestarent/$1';
+// *************kichen******//
+
+$route['kitchen/dashboard'] = 'Kitchen/Dashboard';
+$route['kitchen/orders'] = 'Kitchen/Orders';
 
 

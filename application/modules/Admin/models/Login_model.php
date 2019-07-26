@@ -21,6 +21,16 @@ class Login_model extends CI_Model
 			$query = $this->db->get($this->table_name);
 			$result = $query->row_array();			
 		}
+		if(empty($result)){
+		//	echo '<pre>';print_r($data);exit;
+			$this->db->select("*");
+			$this->db->where('email', $data['email']);
+		    $this->db->where('password', md5($data['password']));
+		    $this->db->where('admin_level','2');
+			$query = $this->db->get($this->table_name);
+			$result = $query->row_array();
+				//echo '<pre>';print_r($result);exit;
+		}
 		return $result;
 	}
 	
