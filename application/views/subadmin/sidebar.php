@@ -15,11 +15,11 @@
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="fa fa-home"></span><span class="mtext">Restaurant </span>
+							<span class="fa fa-home"></span><span class="mtext">Kitchen </span>
 						</a>
 						<ul class="submenu">
-							<li><a href="<?php echo base_url();?>sub-admin/add-restarent">Add Restaurant</a></li>
-							<li><a href="<?php echo base_url();?>sub-admin/restaurant-list">Restaurant List</a></li>
+							<li><a href="<?php echo base_url();?>sub-admin/add-restarent">Add Kitchen</a></li>
+							<li><a href="<?php echo base_url();?>sub-admin/restaurant-list">Kitchen List</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">

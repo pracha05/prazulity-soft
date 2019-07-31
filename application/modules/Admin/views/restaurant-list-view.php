@@ -25,7 +25,7 @@
 								</ol>
 							</nav>
 						</div>
-						<div class="col-md-6 col-sm-12 text-right">
+					<!--	<div class="col-md-6 col-sm-12 text-right">
 							<div class="dropdown">
 								<a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 									January 2018
@@ -36,7 +36,7 @@
 									<a class="dropdown-item" href="#">View Assets</a>
 								</div>
 							</div>
-						</div>
+						</div>-->
 					</div>
 				</div>
 				
@@ -83,7 +83,7 @@
 												<i class="fa fa-ellipsis-h"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right">
-												<a class="dropdown-item" href="#"><i class="fa fa-eye"></i> View</a>
+												<!--<a class="dropdown-item" href="#"><i class="fa fa-eye"></i> View</a>-->
 												<a class="dropdown-item" href="<?php echo base_url();?>admin/edit-restaurant/<?php echo  $row['id'];?>"><i class="fa fa-pencil"></i> Edit</a>
 												<a class="dropdown-item" href="<?php echo base_url();?>admin/Restaurant/delete/<?php echo  $row['id'];?>"><i class="fa fa-trash"></i> Delete</a>
 											</div>

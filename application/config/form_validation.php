@@ -61,6 +61,20 @@
 							),		 
 	        ),
 			
+			'addpackage' => array(	 
+						array(
+								'field' => 'package_name',
+								'label' => 'Package Name',
+								'rules' => 'trim|required|xss_clean'
+							),
+							array(
+								'field' => 'cost_package',
+								'label' => 'Price',
+								'rules' => 'trim|required|xss_clean'
+							),
+									 
+	        ),
+			
 			'addtable' => array(	 
 						array(
 								'field' => 'floor_num',
@@ -152,7 +166,24 @@
 							),
 
                            								
-	                )
+	                ),
+					
+					
+					 'reset_pwd' => array(
+						 array(
+								'field' => 'password',
+								'label' => 'Password',
+								'rules' => 'trim|required|min_length[5]|max_length[16]|xss_clean',
+							    'errors' => array('min_length' => 'Choose min 5 characters.','max_length' => 'Choose max 16 characters.')
+
+							 ),
+						 array(
+								'field' => 'cpassword',
+								'label' => 'Retype Password',
+								'rules' => 'trim|required|matches[password]|xss_clean',
+								'errors' => array('matches' => 'Password and retyped password are not matching')
+							 ),						 
+						)
 
 
   );    

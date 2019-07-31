@@ -23,23 +23,30 @@
 						</ul>
 					</li>
 					<li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle">
-							<span class="fa fa-home"></span><span class="mtext">Payments</span>
+						<a href="<?php echo base_url();?>admin/Payment-details" class="dropdown-toggle">
+							<span class="fa fa-home"></span><span class="mtext">Payments Details</span>
 						</a>
-						<ul class="submenu">
-							<li><a href="<?php echo base_url();?>admin/Payment-details">Add Payments</a></li>
-							
-						</ul>
+						
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="fa fa-home"></span><span class="mtext">Running Client Status</span>
+							<span class="fa fa-home"></span><span class="mtext">Banners </span>
 						</a>
 						<ul class="submenu">
-							<li><a href="<?php echo base_url();?>admin/running-client-status">Add Running Client Status</a></li>
-							
+							<li><a href="<?php echo base_url();?>admin/add-banner">Add Banner</a></li>
+							<li><a href="<?php echo base_url();?>admin/banner-list">Banner List</a></li>
 						</ul>
 					</li>
+				    <li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="fa fa-home"></span><span class="mtext">Packages Details</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="<?php echo base_url();?>admin/add-package">Add Package</a></li>
+							<li><a href="<?php echo base_url();?>admin/package-list">Package List</a></li>
+						</ul>
+					</li>
+					
 					<li class="dropdown">
 						<a href="<?php echo base_url();?>admin/chat" class="dropdown-toggle">
 							<span class="fa fa-home"></span><span class="mtext">Chat</span>

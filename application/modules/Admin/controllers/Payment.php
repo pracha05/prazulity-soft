@@ -14,7 +14,6 @@ class Payment extends MY_Controller
 			redirect(base_url());
 		}
 		$this->load->model('Home_model','common_model');
-		
     }
 	
 	

@@ -22,7 +22,7 @@
 							</nav>
 						</div>
 						<div class="col-md-6 col-sm-12 text-right">
-							<div class="dropdown">
+							<!--<div class="dropdown">
 								<a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 									January 2018
 								</a>
@@ -31,7 +31,7 @@
 									<a class="dropdown-item" href="#">Policies</a>
 									<a class="dropdown-item" href="#">View Assets</a>
 								</div>
-							</div>
+							</div>-->
 						</div>
 					</div>
 				</div>
@@ -39,9 +39,11 @@
 				
 				<!-- multiple select row Datatable End -->
 				<!-- Export Datatable start -->
+				
 				<div class="pd-20 border-radius-4 box-shadow mb-30">
 				
 					<div class="row">
+					<?php foreach($table_data as $val){ ?>
 				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 					<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p pos-reltive">
 						<div class="project-info clearfix">
@@ -51,7 +53,7 @@
 								</div>
 							</div>
 							<div class="project-info-right" style="text-align:left;margin-top:20px; ">
-								<span class="no text-blue weight-500 font-24">Table :4</span>
+								<span class="no text-blue weight-500 font-24">Table :<?php echo $val['table_name'];?></span>
 							
 							</div>
 							<div style="position: absolute;right:-10px;top:-10px;">
@@ -64,167 +66,12 @@
 						<hr style="margin:0px 0px 5px 0px;">
 						<div class="">
 							<a href="">Amt :3500</a> | 
-							<a href="" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#bd-example-modal-lg" >View</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-					<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p pos-reltive">
-						<div class="project-info clearfix">
-								<div class="project-info-left">
-								<div class="icon box-shadow  text-white">
-									<img src="../vendors/images/table.png">
-								</div>
-							</div>
-							<div class="project-info-right" style="text-align:left;margin-top:20px; ">
-								<span class="no text-blue weight-500 font-24">Table :4</span>
-							
-							</div>
-							<div style="position: absolute;right:-10px;top:-10px;">
-								<div style="background:#fff;height:40px;width:40px;border-radius:50%;padding:5px;-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);text-align:center">
-									5
-								</div>
-							</div>
-							
-						</div>
-						<hr style="margin:0px 0px 5px 0px;">
-						<div class="">
-							<a href="">Amt :3500</a> | 
-							<a href="" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#bd-example-modal-lg" >View</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-					<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p pos-reltive">
-						<div class="project-info clearfix">
-								<div class="project-info-left">
-								<div class="icon box-shadow  text-white">
-									<img src="../vendors/images/table.png">
-								</div>
-							</div>
-							<div class="project-info-right" style="text-align:left;margin-top:20px; ">
-								<span class="no text-blue weight-500 font-24">Table :4</span>
-							
-							</div>
-							<div style="position: absolute;right:-10px;top:-10px;">
-								<div style="background:#fff;height:40px;width:40px;border-radius:50%;padding:5px;-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);text-align:center">
-									5
-								</div>
-							</div>
-							
-						</div>
-						<hr style="margin:0px 0px 5px 0px;">
-						<div class="">
-							<a href="">Amt :3500</a> | 
-							<a href="" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#bd-example-modal-lg" >View</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-					<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p pos-reltive">
-						<div class="project-info clearfix">
-								<div class="project-info-left">
-								<div class="icon box-shadow  text-white">
-									<img src="../vendors/images/table.png">
-								</div>
-							</div>
-							<div class="project-info-right" style="text-align:left;margin-top:20px; ">
-								<span class="no text-blue weight-500 font-24">Table :4</span>
-							
-							</div>
-							<div style="position: absolute;right:-10px;top:-10px;">
-								<div style="background:#fff;height:40px;width:40px;border-radius:50%;padding:5px;-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);text-align:center">
-									5
-								</div>
-							</div>
-							
-						</div>
-						<hr style="margin:0px 0px 5px 0px;">
-						<div class="">
-							<a href="">Amt :3500</a> | 
-							<a href="" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#bd-example-modal-lg" >View</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-					<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p pos-reltive">
-						<div class="project-info clearfix">
-								<div class="project-info-left">
-								<div class="icon box-shadow  text-white">
-									<img src="../vendors/images/table.png">
-								</div>
-							</div>
-							<div class="project-info-right" style="text-align:left;margin-top:20px; ">
-								<span class="no text-blue weight-500 font-24">Table :4</span>
-							
-							</div>
-							<div style="position: absolute;right:-10px;top:-10px;">
-								<div style="background:#fff;height:40px;width:40px;border-radius:50%;padding:5px;-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);text-align:center">
-									5
-								</div>
-							</div>
-							
-						</div>
-						<hr style="margin:0px 0px 5px 0px;">
-						<div class="">
-							<a href="">Amt :3500</a> | 
-							<a href="" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#bd-example-modal-lg" >View</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-					<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p pos-reltive">
-						<div class="project-info clearfix">
-								<div class="project-info-left">
-								<div class="icon box-shadow  text-white">
-									<img src="../vendors/images/table.png">
-								</div>
-							</div>
-							<div class="project-info-right" style="text-align:left;margin-top:20px; ">
-								<span class="no text-blue weight-500 font-24">Table :4</span>
-							
-							</div>
-							<div style="position: absolute;right:-10px;top:-10px;">
-								<div style="background:#fff;height:40px;width:40px;border-radius:50%;padding:5px;-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);text-align:center">
-									5
-								</div>
-							</div>
-							
-						</div>
-						<hr style="margin:0px 0px 5px 0px;">
-						<div class="">
-							<a href="">Amt :3500</a> | 
-							<a href="" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#bd-example-modal-lg" >View</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-					<div class="bg-white pd-20 box-shadow border-radius-5 height-100-p pos-reltive">
-						<div class="project-info clearfix">
-								<div class="project-info-left">
-								<div class="icon box-shadow  text-white">
-									<img src="../vendors/images/table.png">
-								</div>
-							</div>
-							<div class="project-info-right" style="text-align:left;margin-top:20px; ">
-								<span class="no text-blue weight-500 font-24">Table :4</span>
-							
-							</div>
-							<div style="position: absolute;right:-10px;top:-10px;">
-								<div style="background:#fff;height:40px;width:40px;border-radius:50%;padding:5px;-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);text-align:center">
-									5
-								</div>
-							</div>
-							
-						</div>
-						<hr style="margin:0px 0px 5px 0px;">
-						<div class="">
-							<a href="">Amt :3500</a> | 
-							<a href="" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#bd-example-modal-lg" >View</a>
+							<button  id="viewdata" value="<?php echo $val['id'];?>" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#bd-example-modal-lg" >View</button>
 						</div>
 					</div>
 				</div>
 				
+				<?php } ?>
 					
 					</div>
 				</div>
@@ -352,3 +199,15 @@
 	
 </body>
 </html>
+
+<script>
+    $(document).ready(function(){
+		
+			$('#viewdata').on('click', function(){
+				alert($(this).val());
+				
+			}
+
+	});
+	
+</script>

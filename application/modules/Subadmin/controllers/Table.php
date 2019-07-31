@@ -46,7 +46,7 @@ class Table extends MY_Controller
 				if($result){
 				
 					$this->session->set_flashdata('msg_succ', 'Added Successfully...');
-					redirect('sub-admin/add-table');
+					redirect($this->redirectpage);
 				}else{
 					$data['msg'] = "Not Inserted...";
 				}

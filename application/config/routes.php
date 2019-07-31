@@ -96,4 +96,16 @@ $route['sub-admin/edit-restarent/([a-zA-Z0-9-]+)'] = 'Subadmin/Restaurant/editre
 $route['kitchen/dashboard'] = 'Kitchen/Dashboard';
 $route['kitchen/orders'] = 'Kitchen/Orders';
 
+$route['admin/profile-list'] = 'Admin/Profile';
+
+$route['admin/add-package'] = 'Admin/Packages/addpackage';
+$route['admin/package-list'] = 'Admin/Packages';
+$route['admin/edit-package/([a-zA-Z0-9-]+)'] = 'Admin/Packages/editpackage/$1';
+
+$route['admin/add-banner'] = 'Admin/Bannerslider/addbanner';
+$route['admin/banner-list'] = 'Admin/Bannerslider';
+$route['admin/edit-banner/([a-zA-Z0-9-]+)'] = 'Admin/Bannerslider/editslider/$1';
+
+
+
 

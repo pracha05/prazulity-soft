@@ -2,21 +2,22 @@
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Menu extends MY_Controller
+class Packages extends MY_Controller
 {	
-	public $listpage = 'menu-view';
-	public $addpage = 'add-menu-view';
-	public $editpage = 'edit-menu-view';
-	public $redirectpage = 'sub-admin/menu-list';
+    public $listpage = 'package-list-view';
+	public $addpage = 'add-package-view';
+	public $editpage = 'edit-package-view';
+	public $redirectpage = 'admin/package-list';
+
 
 	public function __construct() {
         parent::__construct();
-		
+		$this->load->library('email');
 		if($this->session->userdata('id') ==''){
 			redirect(base_url());
 		}
         $this->load->library('session');
-		$this->load->model('Menu_model','My_model');
+		$this->load->model('Packages_model','My_model');
 		$this->load->model('Home_model','common_model');
 		$this->load->library('form_validation');
 		$this->load->helper('security');
@@ -27,47 +28,35 @@ class Menu extends MY_Controller
     }
 	
 	public function index(){
+		$data['record'] = $this->My_model->get_payment_data();
 		$data['sess_data']=$this->common_model->get_login_data($this->session->userdata('id'));
-		$data['record'] = $this->My_model->get_menu_data();
 		$this->load->view($this->listpage,$data);
 	}
 	
-	public function addmenu(){
+	public function addpackage(){
 		$data['sess_data']=$this->common_model->get_login_data($this->session->userdata('id'));
-		if($this->input->post('submit')){
-			if($this->form_validation->run('addmenu')== TRUE){
-				$rand = substr(rand(1,1000000),0,5);
-				$postData['bar_code'] = $this->set_barcode($rand);
-				$result = $this->My_model->add_record($this->session->userdata('id'),$postData);
+		if($this->input->post('submit') != ''){
+			if($this->form_validation->run('addpackage')== TRUE){
+				$result= $this->My_model->add_record();
 				if($result){
-					$this->session->set_flashdata('msg_succ', 'Added Successfully...');
+					$this->session->set_flashdata('msg_succ', 'Package added sucessfully');
 					redirect($this->redirectpage);
 				}else{
-					$data['msg'] = "Not Inserted...";
+					$this->session->set_flashdata('error_meg', 'This email already exists. Please Login.');	
 				}
-			}
+			}	
 		}
 		$this->load->view($this->addpage,$data);
 	}
 	
-	function set_barcode($code){
-        $this->load->library('zend');
-        $this->zend->load('Zend/Barcode');
-        $file = Zend_Barcode::draw('code128', 'image', array('text' => $code), array());
-        $code = time().$code;
-        $store_image = imagepng($file,"./barcode/menu/{$code}.png");
-        return $code.'.png';
-   }
-   
-     public function editmenu($id){
-		$data['sess_data']=$this->common_model->get_login_data($this->session->userdata('id')); 
+	public function editpackage($id){
 		$data['msg'] ='';
 		$data['record'] = $this->My_model->get_single_record($id);
 		    if($this->input->post('submit') != ''){
 				$result = $this->My_model->update_record($id);
 				if($result){
 					$this->session->set_flashdata('msg_succ', 'Updated Successfully...');
-					redirect('sub-admin/menu-list');
+					redirect($this->redirectpage);
 				}else{
 					$data['msg_not'] = "Not Updated...";
 				}
