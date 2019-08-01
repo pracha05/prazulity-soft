@@ -31,12 +31,52 @@ CREATE TABLE `tbl_admin` (
   `created` datetime DEFAULT NULL,
   `admin_last_login` datetime DEFAULT NULL,
   `address` text,
+  `modified` datetime DEFAULT NULL,
+  `package_id` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_admin` */
 
-insert  into `tbl_admin`(`id`,`name`,`email`,`password`,`mob_num`,`admin_level`,`created_by`,`created`,`admin_last_login`,`address`) values (1,'admin','admin@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,'1','1','2019-07-22 17:32:08','2019-07-24 10:26:36',NULL),(2,'shailum','shailaja@gmail.com','e10adc3949ba59abbe56e057f20f883e','9154572708','0',NULL,'2019-07-22 15:22:01','2019-07-24 10:26:36','Addressff'),(3,'shailaja','shailajaw@gmail.com',NULL,'9154572704','0',NULL,'2019-07-22 17:25:57','2019-07-24 10:26:36',NULL),(4,'shailaja','shaildfu@gmail.com',NULL,'9100704080','0',NULL,'2019-07-22 17:31:31','2019-07-24 10:26:36',NULL),(5,'qwdqwd','dwdd@gmail.com',NULL,'9100704080','0',NULL,'2019-07-22 17:31:43','2019-07-24 10:26:36',NULL),(6,'shailum','shailaja@gmail.com',NULL,'9154572708',NULL,NULL,NULL,'2019-07-24 10:26:36','Addressff'),(7,'shailum','shailaja@gmail.com',NULL,'9154572708',NULL,NULL,NULL,'2019-07-24 10:26:36','Addressff');
+insert  into `tbl_admin`(`id`,`name`,`email`,`password`,`mob_num`,`admin_level`,`created_by`,`created`,`admin_last_login`,`address`,`modified`,`package_id`,`status`) values (1,'admin','admin@gmail.com','827ccb0eea8a706c4c34a16891f84e7b',NULL,'1',NULL,NULL,'2019-08-01 02:53:04',NULL,NULL,NULL,1),(3,'subadmin','subadmin@gmail.com','e10adc3949ba59abbe56e057f20f883e','9745632111','0','1','2019-07-30 14:48:36','2019-08-01 02:53:04',NULL,NULL,7,1),(4,'kitchen','kitchen@gmail.com','e10adc3949ba59abbe56e057f20f883e','9100704080','2','3','2019-07-30 14:53:19','2019-08-01 02:53:04','wdwqd\r\nwqdqwd',NULL,NULL,0),(5,'shailaja','sasdas@gmail.com','d41d8cd98f00b204e9800998ecf8427e','9100704080','2','3','2019-07-31 15:48:26','2019-08-01 02:53:04','wdwqd\r\nwqdqwd',NULL,NULL,0),(6,'shailu','aaaa@gmail.com','d41d8cd98f00b204e9800998ecf8427e','7896543211','2','3','2019-07-31 15:50:37','2019-08-01 02:53:04','testing',NULL,NULL,1),(7,'shailu','aaaa@gmail.com','d41d8cd98f00b204e9800998ecf8427e','7896543211','2','3','2019-07-31 15:50:37','2019-08-01 02:53:04','testing',NULL,NULL,1),(8,'bfjsdj','emfnnwje@gmail.com','dbb518e71882a7f2a6fb90b9abab3390','9876543211','0','1','2019-07-31 15:52:09','2019-08-01 02:53:04',NULL,NULL,12,0);
+
+/*Table structure for table `tbl_banner` */
+
+DROP TABLE IF EXISTS `tbl_banner`;
+
+CREATE TABLE `tbl_banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `banner` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `banner_title` varchar(255) DEFAULT NULL,
+  `delete` varchar(1) DEFAULT 'N',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `tbl_banner` */
+
+/*Table structure for table `tbl_billing` */
+
+DROP TABLE IF EXISTS `tbl_billing`;
+
+CREATE TABLE `tbl_billing` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `suba_id` int(11) DEFAULT NULL,
+  `holder_name` varchar(255) DEFAULT NULL,
+  `account_num` varchar(255) DEFAULT NULL,
+  `ifsc_code` varchar(255) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `tbl_billing` */
+
+insert  into `tbl_billing`(`id`,`suba_id`,`holder_name`,`account_num`,`ifsc_code`,`created_by`,`created`,`modified`) values (1,2,'hghfj','54564665','54645','2','2019-07-27 07:29:24',NULL);
 
 /*Table structure for table `tbl_menu` */
 
@@ -52,12 +92,14 @@ CREATE TABLE `tbl_menu` (
   `prise` varchar(255) DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
+  `barcode` varchar(255) DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_menu` */
 
-insert  into `tbl_menu`(`id`,`suba_id`,`category`,`sub_cat`,`item_name`,`quantity`,`prise`,`created_by`,`created`) values (1,2,'aa','cz','asas','half','as','2',NULL),(2,2,'biryani','plain','biryani hyd','full','150','2',NULL);
+insert  into `tbl_menu`(`id`,`suba_id`,`category`,`sub_cat`,`item_name`,`quantity`,`prise`,`created_by`,`created`,`barcode`,`modified`) values (1,2,'biryani','chicken biryani','biryani','half','120','2','2019-07-27 07:50:05','156420660585743.png',NULL);
 
 /*Table structure for table `tbl_offerndeal` */
 
@@ -73,11 +115,52 @@ CREATE TABLE `tbl_offerndeal` (
   `created_by` varchar(255) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_offerndeal` */
 
-insert  into `tbl_offerndeal`(`id`,`suba_id`,`offer_type`,`item`,`ofer_des`,`image`,`created_by`,`created`) values (3,2,'trwe','esefsd','sdgg','offer-208-Lighthouse.jpg','2',NULL),(4,2,'rr','rewr','efdsf','offer-369-Penguins.jpg','2',NULL);
+insert  into `tbl_offerndeal`(`id`,`suba_id`,`offer_type`,`item`,`ofer_des`,`image`,`created_by`,`created`) values (1,2,'zomoto','gg','sgg','offer-771-Lighthouse.jpg','2',NULL);
+
+/*Table structure for table `tbl_orders` */
+
+DROP TABLE IF EXISTS `tbl_orders`;
+
+CREATE TABLE `tbl_orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `r_id` int(11) DEFAULT NULL,
+  `k_id` int(11) DEFAULT NULL,
+  `t_id` int(11) DEFAULT NULL,
+  `item_name` varchar(255) DEFAULT NULL,
+  `item_type` varchar(255) DEFAULT NULL,
+  `quantity` varchar(255) DEFAULT NULL,
+  `prise` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `tbl_orders` */
+
+insert  into `tbl_orders`(`id`,`r_id`,`k_id`,`t_id`,`item_name`,`item_type`,`quantity`,`prise`,`status`,`created_by`,`created`) values (1,NULL,4,1,'Lollypup','non veg','2','500',0,NULL,NULL),(2,NULL,4,1,'Lollypup','non veg','2','500',0,NULL,NULL);
+
+/*Table structure for table `tbl_packages` */
+
+DROP TABLE IF EXISTS `tbl_packages`;
+
+CREATE TABLE `tbl_packages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `package_name` varchar(255) DEFAULT NULL,
+  `cost_package` varchar(255) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `billing` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+/*Data for the table `tbl_packages` */
+
+insert  into `tbl_packages`(`id`,`package_name`,`cost_package`,`created_by`,`created`,`billing`) values (7,'Tablet','2500',1,'2019-07-27 15:56:10','2'),(8,'Tablet + Printer','3125',1,'2019-07-27 15:58:02','2'),(9,'Tablet + Printer + swipe','3750',1,'2019-07-27 15:59:08','2'),(10,'Tablet','2833',1,'2019-07-27 16:00:16','1'),(11,'Tablet + Printer','3542',1,'2019-07-27 16:00:59','1'),(12,'Tablet + Printer + swipe','4250',1,'2019-07-27 16:01:27','1');
 
 /*Table structure for table `tbl_table` */
 
@@ -93,11 +176,11 @@ CREATE TABLE `tbl_table` (
   `created` datetime DEFAULT NULL,
   `barcode` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tbl_table` */
 
-insert  into `tbl_table`(`id`,`suba_id`,`floor_num`,`table_name`,`num_of_seats`,`created_by`,`created`,`barcode`) values (16,2,'32','3','2',NULL,NULL,NULL),(17,2,'32','3','2',NULL,NULL,NULL),(18,2,'4','3','23',NULL,NULL,NULL),(19,2,'2','5','3',NULL,NULL,'1563957286.png'),(20,2,'32','af','2',NULL,NULL,'1563957320.png'),(21,2,'32','3','2',NULL,NULL,'14302'),(22,2,'32','af','2',NULL,NULL,'156396008742625.png'),(23,2,'32','3','55',NULL,NULL,'1563960158.png'),(24,2,'32','43','2',NULL,NULL,'156396017629871.png'),(25,2,'32','3','2',NULL,NULL,'156396030478.png'),(26,2,'32','3','2',NULL,NULL,'156396062181366.png'),(27,2,'32','3','2',NULL,NULL,'156396065311300.png');
+insert  into `tbl_table`(`id`,`suba_id`,`floor_num`,`table_name`,`num_of_seats`,`created_by`,`created`,`barcode`) values (1,2,'1','1','4',NULL,NULL,'156414083831734.png'),(2,2,'1','2','4',NULL,NULL,'156420721742761.png'),(3,2,'1','3','6',NULL,NULL,'156420733558713.png'),(4,2,'1','4','6',NULL,NULL,'156420737557693.png');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
