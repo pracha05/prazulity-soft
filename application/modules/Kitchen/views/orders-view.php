@@ -66,7 +66,7 @@
 						<hr style="margin:0px 0px 5px 0px;">
 						<div class="">
 							<a href="">Amt :3500</a> | 
-							<button  id="viewdata" value="<?php echo $val['id'];?>" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#bd-example-modal-lg" >View</button>
+							<a id="mts"  data-id="<?php echo $val['id']?>" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#bd-example-modal-lg" >View</a>
 						</div>
 					</div>
 				</div>
@@ -88,7 +88,7 @@
 											<table class="table table-bordered">
 											  <thead>
 												<tr>
-												  <th scope="col">#</th>
+												  <th scope="col">s.no</th>
 												  <th scope="col">Item Name</th>
 												  <th scope="col">Item Type</th>
 												  <th scope="col">Qty</th>
@@ -96,97 +96,12 @@
 												  <th scope="col">Status</th>
 												</tr>
 											  </thead>
-											  <tbody>
-												<tr>
-												  <td >1</td>
-												  <td>Lollypup </td>
-												  <td>Non Veg </td>
-												  <td>2 </td>
-												  <td>350  </td>
-												  <td>
-													<a href="" class="btn btn-success btn-sm"><i class="fa fa-check-circle-o" aria-hidden="true"></i> Delivered</a>
-													
-												   </td>
-												  </td>
-												</tr>
-													<tr>
-												  <td >2</td>
-												  <td>Lollypup </td>
-												  <td>Non Veg </td>
-												  <td>2 </td>
-												  <td>350  </td>
-												  <td>
-													<a href="" class="btn btn-primary btn-sm">Update</a>
-													<a href="" class="btn btn-danger btn-sm">Cancel</a>
-												   </td>
-												  </td>
-												</tr>
-													<tr>
-												  <td >3</td>
-												  <td>Lollypup </td>
-												  <td>Non Veg </td>
-												  <td>2 </td>
-												  <td>350  </td>
-												  <td>
-													<a href="" class="btn btn-primary btn-sm">Update</a>
-													<a href="" class="btn btn-danger btn-sm">Cancel</a>
-												   </td>
-												  </td>
-												</tr>
-												<tr>
-												  <td >4</td>
-												  <td>Lollypup </td>
-												  <td>Non Veg </td>
-												  <td>2 </td>
-												  <td>350  </td>
-												  <td>
-													<a href="" class="btn btn-primary btn-sm">Update</a>
-													<a href="" class="btn btn-danger btn-sm">Cancel</a>
-												   </td>
-												  </td>
-												</tr>
-												<tr>
-												  <td >4</td>
-												  <td>Lollypup </td>
-												  <td>Non Veg </td>
-												  <td>2 </td>
-												  <td>350  </td>
-												  <td>
-													<a href="" class="btn btn-primary btn-sm">Update</a>
-													<a href="" class="btn btn-danger btn-sm">Cancel</a>
-												   </td>
-												  </td>
-												</tr>
-												<tr>
-												  <td >4</td>
-												  <td>Lollypup </td>
-												  <td>Non Veg </td>
-												  <td>2 </td>
-												  <td>350  </td>
-												  <td>
-													<a href="" class="btn btn-primary btn-sm">Update</a>
-													<a href="" class="btn btn-danger btn-sm">Cancel</a>
-												   </td>
-												  </td>
-												</tr>
-												<tr>
-													<th colspan="2" >
-														<div class="">Tax: 150</div>
-													</th>
-													<th colspan="2" >
-														<div class="">GST: 150</div>
+											  <tbody id="order_data">
 												
-													</th>
-													<th colspan="2" >
-													
-														<div class="">Grand Total: 1400</div>
-													</th>
-												</tr>
 											  </tbody>
 											</table>
 										</div>
 										<div class="modal-footer">
-											
 											<button type="button" class="btn btn-primary">Close Order</button>
 										</div>
 									</div>
@@ -200,14 +115,54 @@
 </body>
 </html>
 
-<script>
-    $(document).ready(function(){
-		
-			$('#viewdata').on('click', function(){
-				alert($(this).val());
-				
+<script type="text/javascript">
+   $(document).ready(function () {
+      $(document).on("click", "#mts", function () {
+          var id = $(this).data('id');
+		  
+		      var baseurl = "<?php echo base_url();?>";
+			    $('#order_data').html('');
+		        $.get(baseurl+'/Kitchen/Orders/orderdetails/' + id, function (data) {
+				var obj = JSON.parse(data);
+				 var j=1;
+				 var ordtotal = 0;
+				    $.each(obj, function (i, k) {
+						if(k.status ==0){
+							var status = "<button class='btn btn-primary btn-sm updateorder' data-id="+k.id+">Update</button><button  class='btn btn-danger btn-sm cancelorder' data-id="+k.id+">Cancel</button>";
+						}
+						if(k.status ==1){
+							var status = "<button class='btn btn-success btn-sm'><i class='fa fa-check-circle-o' aria-hidden='true'></i> Delivered</button>";
+						}
+						if(k.status ==2){
+							var status = "<button  class='btn btn-danger btn-sm '>Canceled</button>";
+						}
+						$('#order_data').append("<tr><td>" + j+ "</td><td>" + k.item_name + "</td><td>" + k.item_type + "</td><td>" + k.quantity + "</td><td>" + k.prise + "</td><td>"+status+"</td></tr>");
+						ordtotal += parseInt(k.prise);
+						//ordtotal += k.prise;		
+						j++;
+            });
+    	    $('#order_data').append("<tr><th colspan='2'><div class=''>Tax: 150</div></th><th colspan='2' ><div class=''>GST: 150</div></th><th colspan='2' ><div class=''>Grand Total:"+ ordtotal+"</div></th></tr>");
+			});
+		  
+      });
+    	$(document).on("click", ".updateorder", function () {
+            var cnf = confirm("Are you you want to change status!");
+            if(cnf == true){
+			var id = $(this).data('id');
+			var baseurl = "<?php echo base_url();?>";
+				$.get(baseurl+'/Kitchen/Orders/updateorderdata/' + id, function (data) {
+				});
 			}
-
-	});
-	
+        });
+		
+		$(document).on("click", ".cancelorder", function () {
+			var id = $(this).data('id');
+			var baseurl = "<?php echo base_url();?>";
+				$.get(baseurl+'/Kitchen/Orders/cancelorderdata/' + id, function (data) {
+					alert(data);
+				});
+        });
+   });    
 </script>
+
+

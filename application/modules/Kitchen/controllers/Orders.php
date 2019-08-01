@@ -25,6 +25,24 @@ class Orders extends MY_Controller
 	
 	}
 	
+	public function orderdetails($id) {
+		$result = $this->My_model->get_data($id);
+		echo json_encode($result);
+        exit;
+		
+	}
+	
+	public function updateorderdata($id) {
+		$result = $this->My_model->update_data($id);
+		echo json_encode($result);exit;
+	}
+	
+	public function cancelorderdata($id) {
+		$result = $this->My_model->cancelupdate_data($id);
+		echo json_encode($result);exit;
+	}
+	
+	
 	
 	
 }

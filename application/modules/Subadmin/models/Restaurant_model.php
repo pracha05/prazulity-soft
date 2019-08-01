@@ -18,6 +18,7 @@ class Restaurant_model extends CI_Model
 			'email'                => $this->input->post('email'),
 			'mob_num'              => $this->input->post('mobile'),
 			'admin_level'          => 2,
+			'password'      => md5($bpnr_noE),
 			'address'              => $this->input->post('address'),
 			'created'              => date('Y-m-d H:i:s')
 		); 
@@ -57,6 +58,16 @@ class Restaurant_model extends CI_Model
 	}
 	
 	
+   	public function mail_send_register($to,$message){
+		$this->load->library('email');
+		$subject = 'Verify your account';
+		$this->email->from('shailu.gattu26@gmail.com','prazulity'); // change it to yours
+		$this->email->to($to);// change it to yours
+		$this->email->subject($subject);
+		$this->email->message($message);
+		$result = $this->email->send();
+		return $result;
+	}
 
    
 

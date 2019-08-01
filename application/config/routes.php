@@ -105,6 +105,9 @@ $route['admin/edit-package/([a-zA-Z0-9-]+)'] = 'Admin/Packages/editpackage/$1';
 $route['admin/add-banner'] = 'Admin/Bannerslider/addbanner';
 $route['admin/banner-list'] = 'Admin/Bannerslider';
 $route['admin/edit-banner/([a-zA-Z0-9-]+)'] = 'Admin/Bannerslider/editslider/$1';
+$route['admin/change-password'] = 'Admin/Changepassword';
+$route['subadmin/change-password'] = 'SubAdmin/Changepassword';
+$route['kitchen/change-password'] = 'Kitchen/Changepassword';
 
 
 

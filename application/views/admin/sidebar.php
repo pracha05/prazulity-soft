@@ -28,6 +28,8 @@
 						</a>
 						
 					</li>
+					
+					
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
 							<span class="fa fa-home"></span><span class="mtext">Banners </span>
@@ -50,6 +52,12 @@
 					<li class="dropdown">
 						<a href="<?php echo base_url();?>admin/chat" class="dropdown-toggle">
 							<span class="fa fa-home"></span><span class="mtext">Chat</span>
+						</a>
+						
+					</li>
+					<li class="dropdown">
+						<a href="<?php echo base_url();?>admin/change-password" class="dropdown-toggle">
+							<span class="fa fa-home"></span><span class="mtext">Changepassword</span>
 						</a>
 						
 					</li>

@@ -76,6 +76,13 @@
 							<li><a href="tables-list.php">Stats List</a></li>
 						</ul>
 					</li>
+					
+					<li class="dropdown">
+						<a href="<?php echo base_url();?>subadmin/change-password" class="dropdown-toggle">
+							<span class="fa fa-home"></span><span class="mtext">Changepassword</span>
+						</a>
+						
+					</li>
 				</ul>
 			</div>
 		</div>

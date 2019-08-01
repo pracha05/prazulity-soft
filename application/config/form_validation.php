@@ -183,7 +183,26 @@
 								'rules' => 'trim|required|matches[password]|xss_clean',
 								'errors' => array('matches' => 'Password and retyped password are not matching')
 							 ),						 
-						)
+						),
+						
+						 'change_password' => array(
+                                    array(
+                                            'field' => 'old_pwd',
+                                            'label' => 'Old Password',
+                                            'rules' => 'trim|required|xss_clean'
+                                         ),
+                                    array(
+                                            'field' => 'new_pwd',
+                                            'label' => 'New Password',
+                                            'rules' => 'trim|required|min_length[5]|max_length[16]|xss_clean'
+                                         ),
+                                    array(
+                                            'field' => 'conf_pwd',
+                                            'label' => 'Confirm Password',
+                                            'rules' => 'trim|required|matches[new_pwd]|xss_clean'
+                                         ),										 
+                                    )
+			
 
 
   );    

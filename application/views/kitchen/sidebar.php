@@ -21,6 +21,12 @@
 							<li><a href="<?php echo base_url();?>kitchen/orders">Orders</a></li>
 						</ul>
 					</li>
+					<li class="dropdown">
+						<a href="<?php echo base_url();?>kitchen/change-password" class="dropdown-toggle">
+							<span class="fa fa-home"></span><span class="mtext">Changepassword</span>
+						</a>
+						
+					</li>
 				</ul>
 			</div>
 		</div>
